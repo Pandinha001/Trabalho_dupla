@@ -1,10 +1,9 @@
 from hospital import Hospital
 from paciente import Paciente
-from pessoa import Pessoa
 from medico import Medico
 from enfermeiro import Enfermeiro
 from prontuario import Prontuario
-
+from datetime import date
 
 hospital = Hospital()
 
@@ -26,8 +25,8 @@ while True:
             escolha = int(input("Possui um código? "))
             if escolha == 1:
                 
-                codigo = input("Digite seu código de identificação: ")
-                pessoa = hospital.buscar_pessoa(codigo)
+                codigo_identificacao = input("Digite seu código de identificação: ")
+                pessoa = hospital.buscar_pessoa(codigo_identificacao)
 
                 if pessoa is None:
                     print("haha! esse cadastro não existe.")
@@ -52,7 +51,7 @@ while True:
                             pessoa.prontuario.imprimir()
 
                         elif escolha == "3":
-                            print(pessoa.gerar_identificador())
+                            print(pessoa.GerarIdentificador())
 
                         elif escolha == "4":
                             break
@@ -74,7 +73,7 @@ while True:
                         elif escolha == "2":
                             hospital.listar("pacientes")
                         elif escolha == "3":
-                            print(pessoa.gerar_identificador())
+                            print(pessoa.GerarIdentificador())
                         elif escolha == "4":
                             break
                 elif isinstance(pessoa, Enfermeiro):
@@ -94,7 +93,7 @@ while True:
                         elif escolha == "2":
                             hospital.listar("pacientes")
                         elif escolha == "3":
-                            print(pessoa.gerar_identificador())   
+                            print(pessoa.GerarIdentificador())   
                         elif escolha == "4":
                             break 
             elif escolha == 2:
@@ -121,29 +120,35 @@ while True:
 
             sintomas = input("Sintomas: ")
             tipo_sanguineo = input("Tipo sanguíneo: ")
+            exame = input("qual o exame deseja fazer: ")
+            data_entrada = date.today().strftime("%d/%m/%Y")
+
 
             paciente = Paciente(
+                
                 nome,
                 telefone,
                 email,
                 data_nasc,
                 cpf,
                 sintomas,
-                tipo_sanguineo
+                tipo_sanguineo,
+                
             )
 
-            paciente.prontuario = Prontuario()
-
-            hospital.adicionar(paciente)
+            paciente.prontuario = Prontuario(nome, telefone, email, data_nasc, cpf, sintomas, tipo_sanguineo, exame, data_entrada)
+            
+  
+            hospital.adicionar(paciente)    
 
             print("\n Agradecemos a prefêrencia!")
-            print("Seu código é:", paciente.gerar_identificador())
+            print("Seu código é:", paciente.codigo_identificacao)
 
 
         elif tipo == "2":
 
-            especialidade = input("Especialidade: ")
-
+            especialidade = input("Especialidade (cardiologista, pediatra, clinico geral, cirurgiao):  ")
+            
             medico = Medico(
                 nome,
                 telefone,
@@ -151,12 +156,13 @@ while True:
                 data_nasc,
                 cpf,
                 especialidade,
+                
             )
 
             hospital.adicionar(medico)
 
             print("\nCadastro realizado!")
-            print("Seu código é:", medico.codigo)
+            print("Seu código é:", medico.codigo_identificacao)
 
 
         elif tipo == "3":
@@ -171,7 +177,7 @@ while True:
             hospital.adicionar(enfermeiro)
 
             print("\nCadastro realizado!")
-            print("Seu código é:", enfermeiro.codigo)
+            print("Seu código é:", enfermeiro.codigo_identificacao)
 
         else:
             print("Opção inválida.")
