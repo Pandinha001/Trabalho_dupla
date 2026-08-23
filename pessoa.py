@@ -5,7 +5,12 @@ class Pessoa():
         self.email = email
         self.data_nasc = data_nasc
         self.cpf = cpf
-    def GerarIdentinficador():
-        pass
+    def GerarIdentinficador(self):
+        print(self.nome)
+        print(self.telefone)
+        print(self.email)
+        print(self.data_nasc)
+        print(self.cpf)
+                
 
     
