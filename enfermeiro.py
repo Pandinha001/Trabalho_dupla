@@ -1,10 +1,24 @@
+from pessoa import Pessoa
+
 class  Enfermeiro(Pessoa):
+    contador = 0
     def __init__(self, nome, telefone, email, data_nasc, cpf):
         super().__init__(nome, telefone, email, data_nasc, cpf)
-        self.codigo = self.gerar_identificador()
+        self.codigo_identificacao = self.codigo_identificacao()
 
     def GerarIdentinficador(self):
-        pass
+        print(self.nome)
+        print(self.telefone)
+        print(self.email)
+        print(self.data_nasc)
+        print(self.cpf)
+
+    def codigo_identificacao(self):
+
+        Enfermeiro.contador += 1
+        return Enfermeiro.contador
 
     def Administrar_medicamento(self):
-        pass
+        doenca = input("qual sua doença?")
+
+        print("remedio administrado com sucesso")
