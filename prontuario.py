@@ -6,10 +6,8 @@ class Prontuario(Paciente):
         self._exame = exame
         self._data_entrada = data_entrada
         self._sintoma = sintoma
-        
 
     def Imprimir_prontuario(self):
-
         print("PRONTUÁRIO MÉDICO")
         print("Nome:", self._nome )
         print("cpf:", self._cpf)

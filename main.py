@@ -1,4 +1,4 @@
-
+import os 
 from pessoa import Pessoa
 from hospital import Hospital
 from paciente import Paciente
@@ -20,88 +20,92 @@ while True:
     escolha = int(input("Escolha uma opção: "))
 
     if escolha == 1:
-            print("Antes de darmos continuidade, precisamos saber quem é você. ")
-            print("1 - Sim")
-            print("2 - Não, sou um intruso")
-            print("3 - Não, sou o zelador")
-            escolha = int(input("Possui um código? "))
-            if escolha == 1:
+        print("Precisamos saber")
+        print("1 - Paciente")
+        print("2 - Médico")
+        print("3 - Enfermeiro")
+        print("4 - sou um intruso")
+        print("5 - sou o zelador")
+        escolha = int(input("Me diga quem tu és: "))
+
+        if escolha == 1 or escolha == 2 or escolha == 3:
                 
-                codigo_identificacao = int(input("Digite seu código de identificação: "))
-                pessoa = hospital.buscar_pessoa(codigo_identificacao)
+            codigo_identificacao = int(input("Digite seu código de identificação: "))
+           
+            pessoa = hospital.buscar_pessoa(codigo_identificacao,escolha)
 
-                if pessoa is None:
-                    print("haha! esse cadastro não existe.")
-                    continue
+            if pessoa is None:
+                print("haha! esse cadastro não existe.")
+                continue
 
-                if isinstance(pessoa, Paciente):
+            elif isinstance(pessoa, Paciente):
 
-                    while True:
+                while True:
+                    print("\n PACIENTE ")
+                    print("1 - Agendar consulta")
+                    print("2 - Acessar prontuário")
+                    print("3 - Ver meus dados")
+                    print("4 - Sair")
 
-                        print("\n PACIENTE ")
-                        print("1 - Agendar consulta")
-                        print("2 - Acessar prontuário")
-                        print("3 - Ver meus dados")
-                        print("4 - Sair")
+                    escolha = input("Escolha: ")
 
-                        escolha = input("Escolha: ")
+                    if escolha == "1":
+                        pessoa.agendar_consulta()
 
-                        if escolha == "1":
-                            pessoa.agendar_consulta()
+                    elif escolha == "2":
+                        pessoa.prontuario.Imprimir_prontuario()
 
-                        elif escolha == "2":
-                            pessoa.prontuario.Imprimir_prontuario()
+                    elif escolha == "3":
+                        print(pessoa.GerarIdentificador())
 
-                        elif escolha == "3":
-                            pessoa.GerarIdentificador()
+                    elif escolha == "4":
+                        break
 
-                        elif escolha == "4":
-                            break
-                        
-                elif isinstance(pessoa, Medico):
+            elif isinstance(pessoa, Medico):
 
-                    while True:
+                while True:
 
-                        print("\n MÉDICO ")
-                        print("1 - Prescrever tratamento")
-                        print("2 - Ver pacientes")
-                        print("3 - Ver meus dados")
-                        print("4 - sair")
+                    print("\n MÉDICO ")
+                    print("1 - Prescrever tratamento")
+                    print("2 - Ver pacientes")
+                    print("3 - Ver meus dados")
+                    print("4 - sair")
 
-                        escolha = input("Escolha: ")
+                    escolha = input("Escolha: ")
 
-                        if escolha == "1":
-                            pessoa.prescrever_tratamento()
-                        elif escolha == "2":
-                            hospital.listar("pacientes")
-                        elif escolha == "3":
-                            pessoa.GerarIdentificador()
-                        elif escolha == "4":
-                            break
-                elif isinstance(pessoa, Enfermeiro):
+                    if escolha == "1":
+                        pessoa.prescrever_tratamento()
+                    elif escolha == "2":
+                        hospital.listar("pacientes")
+                    elif escolha == "3":
+                        print(pessoa.GerarIdentificador())
+                    elif escolha == "4":
+                        break
+                
+            elif isinstance(pessoa, Enfermeiro):
 
-                    while True:
+                while True:
 
-                        print("\n ENFERMEIRO ")
-                        print("1 - Administrar medicamento")
-                        print("2 - Ver pacientes")
-                        print("3 - Ver meus dados")
-                        print("4 - sair")
+                    print("\n ENFERMEIRO ")
+                    print("1 - Administrar medicamento")
+                    print("2 - Ver pacientes")
+                    print("3 - Ver meus dados")
+                    print("4 - sair")
 
-                        escolha = input("Escolha: ")
+                    escolha = input("Escolha: ")
 
-                        if escolha == "1":
-                            pessoa.administrar_medicamento()
-                        elif escolha == "2":
-                            hospital.listar("pacientes")
-                        elif escolha == "3":
-                            pessoa.GerarIdentificador()
-                        elif escolha == "4":
-                            break 
-            elif escolha == 2:
-                print("GUARDAS, PRENDAM-NO!")
-            elif escolha == 3:
-                print("Hospital limpo com sucesso!")
+                    if escolha == "1":
+                        pessoa.administrar_medicamento()
+                    elif escolha == "2":
+                        hospital.listar("pacientes")
+                    elif escolha == "3":
+                        print(pessoa.GerarIdentificador())
+                    elif escolha == "4":
+                        break 
+        elif escolha == 4:
+            print("GUARDAS, PRENDAM-NO!")
+        elif escolha == 5:
+            print("Hospital limpo com sucesso!")
 
     elif escolha == 2:
         print("\n NOVO CADASTRO ")
@@ -148,6 +152,7 @@ while True:
             hospital.adicionar(medico)
             print("\nCadastro realizado!")
             print("Seu código é:", medico.codigo)
+            
         elif tipo == "3":
             enfermeiro = Enfermeiro(
                 nome,
@@ -164,3 +169,4 @@ while True:
             print("Opção inválida.")
     elif escolha == 3:
         break
+    os.system('cls')

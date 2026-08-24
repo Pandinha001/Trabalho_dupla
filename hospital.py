@@ -7,11 +7,19 @@ class Hospital:
         self.pessoas = []
     def adicionar(self, pessoa):
         self.pessoas.append(pessoa)
-    def buscar_pessoa(self, codigo):
-        for pessoa in self.pessoas:
-            if pessoa.codigo == codigo:
-                return pessoa
-        return None
+    def buscar_pessoa(self,codigo,tipo):
+        if tipo == 1:
+            for pessoa in self.pessoas:
+                if pessoa.codigo == codigo and isinstance(pessoa,Paciente):
+                    return pessoa
+        elif tipo == 2:
+            for pessoa in self.pessoas:
+                if pessoa.codigo == codigo and isinstance(pessoa,Medico):
+                    return pessoa
+        else:
+            for pessoa in self.pessoas:
+                if pessoa.codigo == codigo and isinstance(pessoa,Enfermeiro):
+                    return pessoa
 
     def listar(self, tipo):
         encontrou = False

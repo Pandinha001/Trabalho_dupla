@@ -9,6 +9,7 @@ class Paciente(Pessoa):
         self.codigo = self.codigo_identificacao()
         self.prontuario = None
         self._tipo_sanguineo = tipo_sanguineo
+    
     def GerarIdentificador(self):
         dados_base = super().GerarIdentificador()
         return f"[Cód: {self.codigo}] {dados_base}"

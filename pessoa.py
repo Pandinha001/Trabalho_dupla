@@ -10,5 +10,3 @@ class Pessoa():
         return f"Nome: {self._nome}, Tel: {self._telefone}, Email: {self._email}, CPF: {self._cpf}"
     def __str__(self):
         return self.GerarIdentificador()
-
-    
