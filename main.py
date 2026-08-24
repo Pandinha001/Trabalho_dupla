@@ -25,7 +25,7 @@ while True:
             escolha = int(input("Possui um código? "))
             if escolha == 1:
                 
-                codigo_identificacao = input("Digite seu código de identificação: ")
+                codigo_identificacao = int(input("Digite seu código de identificação: "))
                 pessoa = hospital.buscar_pessoa(codigo_identificacao)
 
                 if pessoa is None:
@@ -51,7 +51,7 @@ while True:
                             pessoa.prontuario.imprimir()
 
                         elif escolha == "3":
-                            print(pessoa.GerarIdentificador())
+                            pessoa.GerarIdentificador()
 
                         elif escolha == "4":
                             break
@@ -73,7 +73,7 @@ while True:
                         elif escolha == "2":
                             hospital.listar("pacientes")
                         elif escolha == "3":
-                            print(pessoa.GerarIdentificador())
+                            pessoa.GerarIdentificador()
                         elif escolha == "4":
                             break
                 elif isinstance(pessoa, Enfermeiro):
@@ -93,7 +93,7 @@ while True:
                         elif escolha == "2":
                             hospital.listar("pacientes")
                         elif escolha == "3":
-                            print(pessoa.GerarIdentificador())   
+                            pessoa.GerarIdentificador()
                         elif escolha == "4":
                             break 
             elif escolha == 2:
@@ -121,13 +121,11 @@ while True:
             data_entrada = date.today().strftime("%d/%m/%Y")
 
             paciente = Paciente(
-                
                 nome,
                 telefone,
                 email,
                 data_nasc,
                 cpf,
-                sintomas,
                 tipo_sanguineo,
             )
             paciente.prontuario = Prontuario(nome, telefone, email, data_nasc, cpf, sintomas, tipo_sanguineo, exame, data_entrada)

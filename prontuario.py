@@ -2,17 +2,19 @@ from paciente import Paciente
 
 class Prontuario(Paciente):
     def __init__(self,  nome, telefone, email, data_nasc, cpf, sintoma, tipo_sanguineo, exame, data_entrada):
-        super().__init__(nome, telefone, email, data_nasc, cpf,sintoma, tipo_sanguineo )
-        self.exame = exame
-        self.data_entrada = data_entrada
+        super().__init__(nome, telefone, email, data_nasc, cpf,)
+        self._exame = exame
+        self._data_entrada = data_entrada
+        self._sintoma = sintoma
+        self._tipo_sanguineo = tipo_sanguineo
 
     def Imprimir_prontuario(self):
 
-        print("PRONTUÁRIO")
-        print("Nome:", self.nome )
-        print("cpf:", self.cpf)
-        print("sintoma:", self.sintoma)
-        print("exame:",self.exame)
-        print("remedio:",self.remedio)
-        print("tipo saguíneo:", self.tipo_sanguineo)
-        print("data entrada", self.data_entrada)
+        print("PRONTUÁRIO MÉDICO")
+        print("Nome:", self._nome )
+        print("cpf:", self._cpf)
+        print("sintoma:", self._sintoma)
+        print("exame:",self._exame)
+        print("remedio:",self._remedio)
+        print("tipo saguíneo:", self._tipo_sanguineo)
+        print("data entrada", self._data_entrada)
