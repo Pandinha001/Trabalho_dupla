@@ -4,11 +4,11 @@ pacientes = {}
 class Paciente(Pessoa):
 
     contador = 0
-    def __init__(self, nome, telefone, email, data_nasc, cpf):
+    def __init__(self, nome, telefone, email, data_nasc, cpf, tipo_sanguineo):
         super().__init__(nome, telefone, email, data_nasc, cpf)
         self.codigo = self.codigo_identificacao()
         self.prontuario = None
-        
+        self._tipo_sanguineo = tipo_sanguineo
     def GerarIdentificador(self):
         dados_base = super().GerarIdentificador()
         return f"[Cód: {self.codigo}] {dados_base}"
