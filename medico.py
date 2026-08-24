@@ -7,7 +7,7 @@ class Medico(Pessoa):
     def __init__(self, nome, telefone, email, data_nasc, cpf, especialidade):
         super().__init__(nome, telefone, email, data_nasc, cpf)
         self.especialidade = especialidade
-        self.codigo_identificacao = self.codigo_identificacao() 
+        self.codigo = self.codigo_identificacao() 
 
     def GerarIdentinficador(self):
         print(self.nome)
@@ -21,9 +21,6 @@ class Medico(Pessoa):
         Medico.contador += 1
         return Medico.contador
         
-    def Criar_laudo(self):
-        print("LAUDO MÉDICO")
-        print("")
 
     def prescrever_tratamento(self):
         print("informe o especialista: )")

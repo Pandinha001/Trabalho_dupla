@@ -4,7 +4,7 @@ class  Enfermeiro(Pessoa):
     contador = 0
     def __init__(self, nome, telefone, email, data_nasc, cpf):
         super().__init__(nome, telefone, email, data_nasc, cpf)
-        self.codigo_identificacao = self.codigo_identificacao()
+        self.codigo = self.codigo_identificacao()
 
     def GerarIdentinficador(self):
         print(self.nome)
@@ -18,7 +18,7 @@ class  Enfermeiro(Pessoa):
         Enfermeiro.contador += 1
         return Enfermeiro.contador
 
-    def Administrar_medicamento(self):
+    def administrar_medicamento(self):
         doenca = input("qual sua doença?")
 
         print("remedio administrado com sucesso")

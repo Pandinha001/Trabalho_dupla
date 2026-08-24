@@ -108,21 +108,17 @@ while True:
         print("3 - Enfermeiro")
 
         tipo = input("Sua escolha: ")
-
         nome = input("Nome: ")
         telefone = input("Telefone: ")
         email = input("E-mail: ")
         data_nasc = input("Data de nascimento: ")
         cpf = input("CPF: ")
 
-
         if tipo == "1":
-
             sintomas = input("Sintomas: ")
             tipo_sanguineo = input("Tipo sanguíneo: ")
             exame = input("qual o exame deseja fazer: ")
             data_entrada = date.today().strftime("%d/%m/%Y")
-
 
             paciente = Paciente(
                 
@@ -133,22 +129,14 @@ while True:
                 cpf,
                 sintomas,
                 tipo_sanguineo,
-                
             )
-
             paciente.prontuario = Prontuario(nome, telefone, email, data_nasc, cpf, sintomas, tipo_sanguineo, exame, data_entrada)
-            
-  
             hospital.adicionar(paciente)    
 
             print("\n Agradecemos a prefêrencia!")
-            print("Seu código é:", paciente.codigo_identificacao)
-
-
+            print("Seu código é:", paciente.codigo)
         elif tipo == "2":
-
             especialidade = input("Especialidade (cardiologista, pediatra, clinico geral, cirurgiao):  ")
-            
             medico = Medico(
                 nome,
                 telefone,
@@ -156,15 +144,10 @@ while True:
                 data_nasc,
                 cpf,
                 especialidade,
-                
             )
-
             hospital.adicionar(medico)
-
             print("\nCadastro realizado!")
-            print("Seu código é:", medico.codigo_identificacao)
-
-
+            print("Seu código é:", medico.codigo)
         elif tipo == "3":
             enfermeiro = Enfermeiro(
                 nome,
@@ -173,11 +156,9 @@ while True:
                 data_nasc,
                 cpf,
             )
-
             hospital.adicionar(enfermeiro)
-
             print("\nCadastro realizado!")
-            print("Seu código é:", enfermeiro.codigo_identificacao)
+            print("Seu código é:", enfermeiro.codigo)
 
         else:
             print("Opção inválida.")

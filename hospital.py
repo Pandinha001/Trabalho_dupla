@@ -1,15 +1,38 @@
-class Hospital():
+from pessoa import Pessoa
+from paciente import Paciente
+from medico import Medico
+from enfermeiro import Enfermeiro
+
+class Hospital:
+
     def __init__(self):
-        pass
-    def adicionar():
-        pass
+        self.pessoas = []
 
-        # salvar em listas os medicos, pacientes e enfermeiros 
+    def adicionar(self, pessoa):
+        self.pessoas.append(pessoa)
+    def buscar_pessoa(self, codigo):
+        for pessoa in self.pessoas:
 
-    def buscar_pessoa(codigo_identificacao):
-        
-        pass
+            if pessoa.codigo == codigo:
+                return pessoa
+        return None
+    def listar(self, tipo):
+        if tipo == "pacientes":
+            for pessoa in self.pessoas:
+                if isinstance(pessoa, Paciente):
+                    print(pessoa)
 
-    # conferir nas listas se o codigo de identificacao bate,  e se 
-    # necessario separar para n ter confusao nas listas, 
-    # se necessario mudar o nome das variaveis q deixei igual
+        elif tipo == "medicos":
+
+            for pessoa in self.pessoas:
+
+                if isinstance(pessoa, Medico):
+                    print(pessoa)
+
+        elif tipo == "enfermeiros":
+            for pessoa in self.pessoas:
+                if isinstance(pessoa, Enfermeiro):
+                    print(pessoa)
+
+        else:
+            print("Isso não existe no hospital")

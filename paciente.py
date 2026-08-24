@@ -9,7 +9,7 @@ class Paciente(Pessoa):
         self.sintoma = sintoma
         self.tipo_sanguineo = tipo_sanguineo
         
-        self.codigo_identificacao = self.codigo_identificacao()
+        self.codigo = self.codigo_identificacao()
         
     def GerarIdentinficador(self):
         print(self.nome)
