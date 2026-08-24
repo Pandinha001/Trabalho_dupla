@@ -1,3 +1,5 @@
+
+from pessoa import Pessoa
 from hospital import Hospital
 from paciente import Paciente
 from medico import Medico
@@ -48,7 +50,7 @@ while True:
                             pessoa.agendar_consulta()
 
                         elif escolha == "2":
-                            pessoa.prontuario.imprimir()
+                            pessoa.prontuario.Imprimir_prontuario()
 
                         elif escolha == "3":
                             pessoa.GerarIdentificador()
@@ -126,7 +128,7 @@ while True:
                 email,
                 data_nasc,
                 cpf,
-                tipo_sanguineo,
+                tipo_sanguineo
             )
             paciente.prontuario = Prontuario(nome, telefone, email, data_nasc, cpf, sintomas, tipo_sanguineo, exame, data_entrada)
             hospital.adicionar(paciente)    
