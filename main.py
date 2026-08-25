@@ -1,3 +1,4 @@
+
 import os 
 from pessoa import Pessoa
 from hospital import Hospital
@@ -134,7 +135,7 @@ while True:
                 cpf,
                 tipo_sanguineo
             )
-            paciente.prontuario = Prontuario(nome, telefone, email, data_nasc, cpf, sintomas, tipo_sanguineo, exame, data_entrada)
+            paciente.prontuario = Prontuario( sintomas, tipo_sanguineo, exame, data_entrada, paciente)
             hospital.adicionar(paciente)    
 
             print("\n Agradecemos a prefêrencia!")
