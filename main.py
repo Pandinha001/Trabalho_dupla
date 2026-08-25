@@ -1,5 +1,5 @@
 
-import os 
+
 from pessoa import Pessoa
 from hospital import Hospital
 from paciente import Paciente
@@ -170,4 +170,4 @@ while True:
             print("Opção inválida.")
     elif escolha == 3:
         break
-    os.system('cls')
+   
