@@ -1,5 +1,3 @@
-
-
 from pessoa import Pessoa
 from hospital import Hospital
 from paciente import Paciente
@@ -11,14 +9,15 @@ from datetime import date
 hospital = Hospital()
 
 while True:
-
-    print("BEM VINDO AO HOSPITAL ...")
-
+    print("---------------------")
+    print("BEM VINDO AO HOSPITAL CORAZON")
+    print("---------------------")
     print("Possui cadastro?")
     print("1 - Sim")
     print("2 - Não")
     print("3 - sair")
     escolha = int(input("Escolha uma opção: "))
+    print("---------------------")
 
     if escolha == 1:
         print("Precisamos saber")
@@ -28,6 +27,7 @@ while True:
         print("4 - sou um intruso")
         print("5 - sou o zelador")
         escolha = int(input("Me diga quem tu és: "))
+        print("---------------------")
 
         if escolha == 1 or escolha == 2 or escolha == 3:
                 
@@ -36,17 +36,19 @@ while True:
             pessoa = hospital.buscar_pessoa(codigo_identificacao,escolha)
 
             if pessoa is None:
+                print("---------------------")
                 print("haha! esse cadastro não existe.")
                 continue
 
             elif isinstance(pessoa, Paciente):
 
                 while True:
-                    print("\n PACIENTE ")
+                    print(" PACIENTE ")
                     print("1 - Agendar consulta")
                     print("2 - Acessar prontuário")
                     print("3 - Ver meus dados")
                     print("4 - Sair")
+                    print("---------------------")
 
                     escolha = input("Escolha: ")
 
@@ -66,11 +68,12 @@ while True:
 
                 while True:
 
-                    print("\n MÉDICO ")
+                    print(" MÉDICO ")
                     print("1 - Prescrever tratamento")
                     print("2 - Ver pacientes")
                     print("3 - Ver meus dados")
                     print("4 - sair")
+                    print("---------------------")
 
                     escolha = input("Escolha: ")
 
@@ -87,11 +90,12 @@ while True:
 
                 while True:
 
-                    print("\n ENFERMEIRO ")
+                    print(" ENFERMEIRO ")
                     print("1 - Administrar medicamento")
                     print("2 - Ver pacientes")
                     print("3 - Ver meus dados")
                     print("4 - sair")
+                    print("---------------------")
 
                     escolha = input("Escolha: ")
 
@@ -109,11 +113,12 @@ while True:
             print("Hospital limpo com sucesso!")
 
     elif escolha == 2:
-        print("\n NOVO CADASTRO ")
+        print(" NOVO CADASTRO ")
         print("1 - Paciente")
         print("2 - Médico")
         print("3 - Enfermeiro")
-
+        print("---------------------")
+        print("--- INFORMAÇÕES PESSOAIS ---")
         tipo = input("Sua escolha: ")
         nome = input("Nome: ")
         telefone = input("Telefone: ")
@@ -122,10 +127,13 @@ while True:
         cpf = input("CPF: ")
 
         if tipo == "1":
+            print("---------------------")
+            print("--- INFORMAÇÕES ADICIONAIS ---")
             sintomas = input("Sintomas: ")
             tipo_sanguineo = input("Tipo sanguíneo: ")
             exame = input("qual o exame deseja fazer: ")
             data_entrada = date.today().strftime("%d/%m/%Y")
+            print("---------------------")
 
             paciente = Paciente(
                 nome,
@@ -138,10 +146,12 @@ while True:
             paciente.prontuario = Prontuario( sintomas, tipo_sanguineo, exame, data_entrada, paciente)
             hospital.adicionar(paciente)    
 
-            print("\n Agradecemos a prefêrencia!")
+            print("Agradecemos a prefêrencia!")
             print("Seu código é:", paciente.codigo)
         elif tipo == "2":
+            print("---------------------")
             especialidade = input("Especialidade (cardiologista, pediatra, clinico geral, cirurgiao):  ")
+            print("---------------------")
             medico = Medico(
                 nome,
                 telefone,
@@ -151,7 +161,7 @@ while True:
                 especialidade,
             )
             hospital.adicionar(medico)
-            print("\nCadastro realizado!")
+            print("Cadastro realizado!")
             print("Seu código é:", medico.codigo)
             
         elif tipo == "3":
@@ -163,7 +173,7 @@ while True:
                 cpf,
             )
             hospital.adicionar(enfermeiro)
-            print("\nCadastro realizado!")
+            print("Cadastro realizado!")
             print("Seu código é:", enfermeiro.codigo)
 
         else:
